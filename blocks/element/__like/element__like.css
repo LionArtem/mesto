@@ -1,0 +1,14 @@
+.element__like {
+  width: 22px;
+  height: 19px;
+  margin: 5px 5px 0px 0px;
+  background-image: url(../../../images/Vector.svg);
+}
+
+.element__like:hover {
+  cursor: pointer;
+  background-image: url(../../../images/Vector\ \(2\).svg);
+  width: 22px;
+  height: 19px;
+  margin: 5px 5px 0px 0px;
+}
