@@ -10,11 +10,7 @@
 @media screen and (max-width: 720px) {
   .profile {
     flex-wrap: wrap;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .profile {
-    flex-wrap: wrap;
+    margin-bottom: 36px;
+    justify-content: center;
   }
 }

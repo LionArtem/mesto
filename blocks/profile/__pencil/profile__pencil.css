@@ -4,7 +4,7 @@
   margin: auto;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 360px) {
   .profile__pencil {
     width: 7.5px;
     height: 7.5px;

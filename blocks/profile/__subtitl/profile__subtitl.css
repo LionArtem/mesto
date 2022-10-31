@@ -7,7 +7,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 360px) {
   .profile__subtitl {
     font-size: 14px;
     line-height: 17px;
