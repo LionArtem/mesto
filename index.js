@@ -18,7 +18,8 @@ function formSubmitHandler (evt) {
 
 function openClick() {
   popup.classList.add('popup_opened');
-  
+  infoName.value = profileTitle.textContent;
+  infoJob.value = profileSubtitl.textContent;
 }
 
 function closeClick() {
