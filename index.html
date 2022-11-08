@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="pages/index.css">
   </head>
   <body class="page">
-    <div class="popup">
-      <form class="popup__container" name="editProfile">
-        <button class="popup__button-close" type="button"></button>
+    <div class="popup popup_type_profile">
+      <form class="popup__container popup__container_type_profile" name="editProfile">
+        <button class="popup__button-close popup__button-close_tepe_profile" type="button"></button>
         <p class="popup__edit-profile">Редактировать профиль</p>
         <fieldset class="popup__info">
           <input class="popup__info-text popup__info-text_type_name" type="text" value="Жак-Ив Кусто">
@@ -18,6 +18,24 @@
         </fieldset>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
+    </div>
+    <div class="popup popup_type_elements">
+      <form class="popup__container popup__container_type_elements" name="addElements">
+        <button class="popup__button-close popup__button-close_tepe_elements" type="button"></button>
+        <p class="popup__edit-profile">Новое место</p>
+        <fieldset class="popup__info">
+          <input class="popup__info-text popup__info-text_type_title" type="text" value="Название">
+          <input class="popup__info-text popup__info-text_type_fotolink" type="text" value="Ссылка на картинку">
+        </fieldset>
+        <button class="popup__save-button" type="submit">Создать</button>
+      </form>
+    </div>
+    <div class="popup-foto">
+      <div class="popup-foto__conteiner">
+        <button class="popup-foto__button-close popup__button-close" type="button"></button>
+        <img class="popup-foto__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
+        <p class="popup-foto__name-foto">Название места</p>
+      </div>
     </div>
     <header class="header">
       <div class="header__logo"></div>
@@ -39,48 +57,16 @@
           </button>
         </section>
         <section class="elements">
-          <div class="element">
-            <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
-            <div class="element__signature">
-              <p class="element__name-foto">Название места</p>
-              <button class="element__like" type="button"></button>
+          <template id="elements">
+            <div class="element">
+              <button class="element__delete" type="button"></button>
+              <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
+              <div class="element__signature">
+                <p class="element__name-foto">Название места</p>
+                <button class="element__like" type="button"></button>
+              </div>
             </div>
-          </div>
-          <div class="element">
-            <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
-            <div class="element__signature">
-              <p class="element__name-foto">Название места</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img class="element__foto" src="./images/o1JpXPk39lQ.jpg" alt="замок">
-            <div class="element__signature">
-              <p class="element__name-foto">Сочи,Роза-Хутор.</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
-            <div class="element__signature">
-              <p class="element__name-foto">Название места</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
-            <div class="element__signature">
-              <p class="element__name-foto">Название места</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img class="element__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
-            <div class="element__signature">
-              <p class="element__name-foto">Название места</p>
-              <button class="element__like" type="button"></button>
-            </div>
-          </div>
+          </template>
         </section>
       </main>
       <footer class="footer">

@@ -1,0 +1,14 @@
+.element__delete {
+  all: unset;
+  width: 18px;
+  height: 19px;
+  background-image: url(../../../images/Group.png);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.element__delete:hover {
+  cursor: pointer;
+  opacity: .5;
+}
