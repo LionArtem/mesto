@@ -8,5 +8,6 @@
 
 .element__like:hover {
   cursor: pointer;
-  background-image: url(../../../images/like.svg);
+  opacity: .5;
+  /*background-image: url(../../../images/like.svg);*/
 }

@@ -101,11 +101,10 @@ const initialCards = [
     element.querySelector('.element__like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('element__like_active');
     });
-
+    
     element.querySelector('.element__delete').addEventListener('click', function (evt) {
         const elementDelete = evt.target.closest('.element');
         elementDelete.remove();
-        console.log(evt.target.closest('.element'));
     });
 
     elements.prepend(element);
@@ -149,7 +148,6 @@ function formSubmitHandlerElements (evt) {
   element.querySelector('.element__delete').addEventListener('click', function (evt) {
     const elementDelete = evt.target.closest('.element');
     elementDelete.remove();
-    console.log(evt.target.closest('.element'));
 });
 
   elements.prepend(element);
