@@ -22,10 +22,11 @@ const infoFotoLink = formElementElements.querySelector('.popup__info-text_type_f
 const elements = document.querySelector('.elements');// картачка с фото 
 const elementsTemplate = document.querySelector('#elements').content;//находим Template
 
+const popupFoto = document.querySelector('.popup-foto');
+const popupFotoAdd = popupFoto.querySelector('.popup-foto__foto');
+const popupNameFotoAdd = popupFoto.querySelector('.popup-foto__name-foto');
 
-
-
-function formSubmitHandlerProfile (evt) {
+function SubmitHandlerProfileform (evt) {
   evt.preventDefault();
   const imputName = infoName.value;
   profileTitle.textContent = imputName;
@@ -60,10 +61,8 @@ openAdd.addEventListener('click', openClickAdd);
 closeProfile.addEventListener('click', closeClickProfile);
 closeElements.addEventListener('click', closeClickElements);
 
-
-
-formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
-formElementElements.addEventListener('submit', formSubmitHandlerElements);
+formElementProfile.addEventListener('submit', SubmitHandlerProfileform);
+formElementElements.addEventListener('submit', SubmitHandlerElementsform);
 
 const initialCards = [
   {
@@ -97,6 +96,7 @@ const initialCards = [
   
     element.querySelector('.element__name-foto').textContent  = item.name;
     element.querySelector('.element__foto').src = item.link;
+    element.querySelector('.element__foto').alt = item.name;
 
     element.querySelector('.element__like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('element__like_active');
@@ -107,11 +107,7 @@ const initialCards = [
         elementDelete.remove();
     });
 
-    
-
     elements.prepend(element);
-
-    
 
     const elementFoto = document.querySelector('.element__foto');
     const fotoClose = document.querySelector('.popup-foto__button-close');
@@ -119,9 +115,8 @@ const initialCards = [
     const popupFotoAdd = popupFoto.querySelector('.popup-foto__foto');
     const popupNameFotoAdd = popupFoto.querySelector('.popup-foto__name-foto');
 
-
     elementFoto.addEventListener('click', openElementFoto);
-    fotoClose.addEventListener('click', fotoCloseButton);
+    fotoClose.addEventListener('click', CloseButtonfoto);
 
     function openElementFoto() {
       popupFoto.classList.add('popup-foto_opened');
@@ -129,20 +124,18 @@ const initialCards = [
       popupNameFotoAdd.textContent = item.name; 
     }
 
-    function fotoCloseButton() {
+    function CloseButtonfoto() {
       popupFoto.classList.remove('popup-foto_opened');
     }
-
-    
 });
 
-
-function formSubmitHandlerElements (evt) {
+function SubmitHandlerElementsform (evt) {
   evt.preventDefault();
   const element = elementsTemplate.querySelector('.element').cloneNode(true);
 
   element.querySelector('.element__name-foto').textContent  = infoTitle.value;
   element.querySelector('.element__foto').src = infoFotoLink.value;
+  element.querySelector('.element__foto').alt = infoTitle.value;
 
   element.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
@@ -157,23 +150,19 @@ function formSubmitHandlerElements (evt) {
 
     const elementFoto = document.querySelector('.element__foto');
     const fotoClose = document.querySelector('.popup-foto__button-close');
-    const popupFoto = document.querySelector('.popup-foto');
-    const popupFotoAdd = popupFoto.querySelector('.popup-foto__foto');
-    const popupNameFotoAdd = popupFoto.querySelector('.popup-foto__name-foto');
-
 
     elementFoto.addEventListener('click', openelementFoto);
-    fotoClose.addEventListener('click', fotoCloseButton);
-
-    function openelementFoto() {
-      popupFoto.classList.add('popup-foto_opened');
-      popupFotoAdd.src = infoFotoLink.value;
-      popupNameFotoAdd.textContent = infoTitle.value; 
-    }
-
-    function fotoCloseButton() {
-      popupFoto.classList.remove('popup-foto_opened');
-    }
+    fotoClose.addEventListener('click', CloseButtonfoto);
 
   popupElements.classList.remove('popup_opened');
+}
+
+function openelementFoto() {
+  popupFoto.classList.add('popup-foto_opened');
+  popupFotoAdd.src = infoFotoLink.value;
+  popupNameFotoAdd.textContent = infoTitle.value; 
+}
+
+function CloseButtonfoto() {
+  popupFoto.classList.remove('popup-foto_opened');
 }
