@@ -13,6 +13,7 @@
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 
 @import url(../blocks/popup-foto/popup-foto.css);
+@import url(../blocks/popup-foto/__button-close/popup-foto__button-close.css);
 @import url(../blocks/popup-foto/_opened/popup-foto_opened.css);
 @import url(../blocks/popup-foto/__conteiner/popup-foto__conteiner.css);
 @import url(../blocks/popup-foto/__foto/popup-foto__foto.css);
