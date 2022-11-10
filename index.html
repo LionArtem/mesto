@@ -13,8 +13,8 @@
         <button class="popup__button-close popup__button-close_tepe_profile" type="button"></button>
         <p class="popup__edit-profile">Редактировать профиль</p>
         <fieldset class="popup__info">
-          <input class="popup__info-text popup__info-text_type_name" type="text" value="Жак-Ив Кусто">
-          <input class="popup__info-text popup__info-text_type_job" type="text" value="Исследователь океана">
+          <input class="popup__info-text popup__info-text_type_name" type="text" placeholder="Имя">
+          <input class="popup__info-text popup__info-text_type_job" type="text" placeholder="Вид деятельности">
         </fieldset>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
@@ -30,7 +30,7 @@
         <button class="popup__save-button" type="submit">Создать</button>
       </form>
     </div>
-    <div class="popup-foto">
+    <div class="popup-foto popup">
       <div class="popup-foto__conteiner">
         <button class="popup-foto__button-close" type="button"></button>
         <img class="popup-foto__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
@@ -72,6 +72,7 @@
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
-    <script src="index.js"></script>
+    <script src="./src/constants.js"></script>
+    <script src="./src/index.js"></script>
   </body>
 </html>

@@ -1,13 +1,3 @@
 .popup-foto {
   background-color: black;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  z-index: 1;
-  display: flex;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility .2s, opacity .2s linear;
 }
