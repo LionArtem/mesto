@@ -74,8 +74,7 @@ buttonCloseFoto.addEventListener('click', closeAddFoto);
 formEditProfile.addEventListener('submit', submitHandlerProfileForm);//кнопка редактирования профиля
 formAddFoto.addEventListener('submit', submitHandlerElementsForm);
 
-function createCard() { //изначально отрисованные карточки через массив
-  initialCards.forEach(function (item) {
+  initialCards.forEach(function (item) { //изначально отрисованные карточки через массив
     const copyElementTemplate = elementTemplate.querySelector('.element').cloneNode(true);//клонируем содержимое Template
   
     copyElementTemplate.querySelector('.element__name-foto').textContent  = item.name;
@@ -112,7 +111,7 @@ function createCard() { //изначально отрисованные карт
       popupFoto.classList.remove('popup-foto_opened');
     }
 });
-}
+
 
 function submitHandlerElementsForm (evt) { //добавление карточки через попап 
   evt.preventDefault();
@@ -141,5 +140,3 @@ sectionFoto.prepend(copyElementTemplate);
 
     popupAddFoto.classList.remove('popup_opened');
 }
-
-createCard();
