@@ -1,5 +1,5 @@
-.popup-foto__button-close {
-  background-image: url(../../../images/Close\ Icon.png);
+.button-close {
+  background-image: url(../../images/Close\ Icon.png);
   background-size: contain;
   width: 32px;
   height: 32px;
@@ -12,13 +12,13 @@
   right: -40px;
 }
 
-.popup-foto__button-close:hover {
+.button-close:hover {
   cursor: pointer;
   opacity: .5;
 }
 
 @media screen and (max-width: 600px) {
-  .popup-foto__button-close {
+  .button-close {
     width: 20px;
     height: 20px;
     top: -36px;
