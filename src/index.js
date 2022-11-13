@@ -37,25 +37,25 @@ function submitHandlerProfileForm (evt) {
   profileTitle.textContent = valueNameProfile;
   const valueJobProfile = popupInfoJob.value;
   profileSubtitl.textContent = valueJobProfile;
-  popupEditProfile.classList.remove('popup_opened');
+  closePopup(popupEditProfile);
 }
 
 function openEditProfile() {
   openPopup(popupEditProfile);
-  popupInfoName.value = '';
-  popupInfoJob.value = '';
+  popupInfoName.value = profileTitle.textContent;
+  popupInfoJob.value = profileSubtitl.textContent;
 }
 
 function openAddFoto() {
   openPopup(popupAddFoto);
-  infoFotoTitle.value = '';
-  infoFotoLink.value = '';
+  formAddFoto.reset();
 }
 
 function openElementFoto(name, link) {
   openPopup(popupFoto);
   fotoPopup.src = link;
   nameFotoPopup.textContent = name;
+  fotoPopup.alt = name;
 }
 
 function openPopup(popup) {
@@ -78,29 +78,30 @@ formAddFoto.addEventListener('submit', submitHandlerElementsForm);
 
 function getCard (name, link) {//возвращает готовую карточку 
     const copyElementTemplate = elementTemplate.querySelector('.element').cloneNode(true);
+    const copyElementFotoTemplate = copyElementTemplate.querySelector('.element__foto');
     copyElementTemplate.querySelector('.element__name-foto').textContent  = name;
-    copyElementTemplate.querySelector('.element__foto').src = link;
-    copyElementTemplate.querySelector('.element__foto').alt = name;
+    copyElementFotoTemplate.src = link;
+    copyElementFotoTemplate.alt = name;
     copyElementTemplate.querySelector('.element__like').addEventListener('click', addLike);
     copyElementTemplate.querySelector('.element__delete').addEventListener('click', deleteFoto);
-    copyElementTemplate.querySelector('.element__foto').addEventListener('click', () => openElementFoto(name, link));
+    copyElementFotoTemplate.addEventListener('click', () => openElementFoto(name, link));
     return copyElementTemplate;
 };
 
-function addcard (card) {//добавляет карточку в разметку
+function addCard (card) {//добавляет карточку в разметку
   sectionFoto.prepend(card);
 };
 
 function submitHandlerElementsForm (evt) { //добавление карточки через попап 
   evt.preventDefault();
   const cardSubmit = getCard(infoFotoTitle.value, infoFotoLink.value);
-  addcard (cardSubmit);
+  addCard (cardSubmit);
   closePopup(popupAddFoto);
   };
 
   initialCards.forEach(function (item) { //массив с карточками 
     const cardSubmit = getCard(item.name, item.link);
-    addcard (cardSubmit);
+    addCard (cardSubmit);
     });
 
     function addLike (evt) { 
