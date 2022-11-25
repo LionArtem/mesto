@@ -1,7 +1,7 @@
 .popup__info-text {
   width: 358px;
   border-width: 0px 0px 1px;
-  margin: 0px 36px 30px;
+  margin: 0px 36px 0px;
   padding: 0;
   padding-bottom: 13px;
   font-family: 'Inter', Arial, sans-serif;
@@ -16,6 +16,9 @@
   margin-bottom: 0px;
 }
 
+/*.popup__info-text:invalid {
+  border-bottom-color: #FF0000;
+}*/
 
 @media screen and (max-width: 600px) {
   .popup__info-text {
