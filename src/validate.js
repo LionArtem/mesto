@@ -9,7 +9,7 @@ const setEventListeners = (formElement, element) => {//собираем форм
   const inputList = Array.from(formElement.querySelectorAll(element.inputSelector));
   const buttonElement = formElement.querySelector(element.submitButtonSelector);
   inputList.forEach((inputElement) => {
-    toggleButtonState(inputList, buttonElement, element);
+    /*toggleButtonState(inputList, buttonElement, element);*/
     inputElement.addEventListener('input', () => {
       isValid(formElement, inputElement, element);
       toggleButtonState(inputList, buttonElement, element);
@@ -42,11 +42,19 @@ const showInputError = (formElement, inputElement, errorMessage, element) => {
   errorElement.textContent = errorMessage;
 };
 
+function closeValidForm(popup) {
+  const inputList = Array.from(popup.querySelectorAll('.popup__info-text'));
+  inputList.forEach((inputElement) => {
+    hideInputError(popup, inputElement, {inputErrorClass: 'popup__info-text_type_error'});
+  });
+};
+
 // Функция, которая удаляет текст с ошибкой
 const hideInputError = (formElement, inputElement, element) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(element.inputErrorClass);
   errorElement.textContent = '';
+  console.log();
 };
 
 // Функция, которая проверяет валидность поля
@@ -58,6 +66,11 @@ const isValid = (formElement, inputElement, element) => {
     // Если проходит, скроем
     hideInputError(formElement, inputElement, element);
   }
+};
+
+function blockButton(button, buttonSelectorDisabled) {
+  button.classList.add(buttonSelectorDisabled);
+  buttonElement.disabled = true;
 };
 
 enableValidation({

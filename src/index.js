@@ -33,6 +33,7 @@ const fotoNameElement = document.querySelector('.lement__name-foto');
 
 const popup = document.querySelector('.popup');
 
+const buttonElement = popupAddFoto.querySelector('.popup__save-button');
 
 function submitHandlerProfileForm (evt) {
   evt.preventDefault();
@@ -47,60 +48,31 @@ function openEditProfile() {
   openPopup(popupEditProfile);
   popupInfoName.value = profileTitle.textContent;
   popupInfoJob.value = profileSubtitl.textContent;
-  const buttonElement = popupEditProfile.querySelector('.popup__save-button');
-  buttonElement.classList.remove('popup__save-button_disabled');
-  buttonElement.disabled = false;
-}
+};
 
 function openAddFoto() {
   openPopup(popupAddFoto);
   formAddFoto.reset();
 
-  const errorAdd = Array.from(formAddFoto.querySelectorAll('.popup__info-text'));
-  errorAdd.forEach((formElement) => {
-    formElement.classList.add('popup__info-text_type_error');
-    addTextError(formElement.validationMessage);
-  });
-
-  function addTextError(errorMessage) {
-  const textError =  Array.from(popupAddFoto.querySelectorAll('.popup__input-error'));
-  textError.forEach((formElement) => {
-    formElement.textContent = errorMessage;
-  });
-  }
-    const buttonElement = popupAddFoto.querySelector('.popup__save-button');
-    buttonElement.classList.add('popup__save-button_disabled');
-    buttonElement.disabled = true;
-}
+   blockButton(buttonElement, 'popup__save-button_disabled');
+};
 
 function openElementFoto(name, link) {
-  openPopup(popupFoto);
   fotoPopup.src = link;
   nameFotoPopup.textContent = name;
   fotoPopup.alt = name;
-}
+  openPopup(popupFoto);
+};
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   addListenerSrc();
 }
 
-function closeValidForm(popup) {//удаление ошибок
-  const borderError = Array.from(popup.querySelectorAll('.popup__info-text'));
-  borderError.forEach((formElement) => {
-    formElement.classList.remove('popup__info-text_type_error');
-  });
-
-  const textError =  Array.from(popup.querySelectorAll('.popup__input-error'));
-  textError.forEach((formElement) => {
-    formElement.textContent = '';
-  });
-}
-
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  closeValidForm(popup);
   removeListenerSrc();
+  closeValidForm(popup);
 }
 
 const removeListenerSrc = () => {
@@ -129,28 +101,16 @@ const closePopapOwerlow = () => {
   });
 }
 
-closePopapOwerlow();
-
-buttonEditProfile.addEventListener('click', openEditProfile);
-buttonAddFoto.addEventListener('click', openAddFoto);
-
-buttonCloseProfile.addEventListener('click', ()=> closePopup(popupEditProfile));
-buttonCloseFoto.addEventListener('click', ()=> closePopup(popupAddFoto));
-buttonClosePopupFoto.addEventListener('click', ()=> closePopup(popupFoto));
-
-formEditProfile.addEventListener('submit', submitHandlerProfileForm);//кнопка редактирования профиля
-formAddFoto.addEventListener('submit', submitHandlerElementsForm);
-
 function getCard (name, link) {//возвращает готовую карточку 
-    const copyElementTemplate = elementTemplate.querySelector('.element').cloneNode(true);
-    const copyElementFotoTemplate = copyElementTemplate.querySelector('.element__foto');
-    copyElementTemplate.querySelector('.element__name-foto').textContent  = name;
-    copyElementFotoTemplate.src = link;
-    copyElementFotoTemplate.alt = name;
-    copyElementTemplate.querySelector('.element__like').addEventListener('click', addLike);
-    copyElementTemplate.querySelector('.element__delete').addEventListener('click', deleteFoto);
-    copyElementFotoTemplate.addEventListener('click', () => openElementFoto(name, link));
-    return copyElementTemplate;
+  const copyElementTemplate = elementTemplate.querySelector('.element').cloneNode(true);
+  const copyElementFotoTemplate = copyElementTemplate.querySelector('.element__foto');
+  copyElementTemplate.querySelector('.element__name-foto').textContent  = name;
+  copyElementFotoTemplate.src = link;
+  copyElementFotoTemplate.alt = name;
+  copyElementTemplate.querySelector('.element__like').addEventListener('click', addLike);
+  copyElementTemplate.querySelector('.element__delete').addEventListener('click', deleteFoto);
+  copyElementFotoTemplate.addEventListener('click', () => openElementFoto(name, link));
+  return copyElementTemplate;
 };
 
 function addCard (card) {//добавляет карточку в разметку
@@ -177,3 +137,15 @@ function submitHandlerElementsForm (evt) { //добавление карточк
     const elementFotoDelete = evt.target.closest('.element');
     elementFotoDelete.remove();
   };
+
+buttonEditProfile.addEventListener('click', openEditProfile);
+buttonAddFoto.addEventListener('click', openAddFoto);
+
+buttonCloseProfile.addEventListener('click', ()=> closePopup(popupEditProfile));
+buttonCloseFoto.addEventListener('click', ()=> closePopup(popupAddFoto));
+buttonClosePopupFoto.addEventListener('click', ()=> closePopup(popupFoto));
+
+formEditProfile.addEventListener('submit', submitHandlerProfileForm);//кнопка редактирования профиля
+formAddFoto.addEventListener('submit', submitHandlerElementsForm);
+
+closePopapOwerlow();

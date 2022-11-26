@@ -8,39 +8,6 @@
     <link rel="stylesheet" href="pages/index.css">
   </head>
   <body class="page">
-    <div class="popup popup_type_profile">
-      <form class="popup__container popup__container_type_profile" name="editProfile" novalidate>
-        <button class="button-close button-close_tepe_profile" type="button"></button>
-        <p class="popup__edit-profile">Редактировать профиль</p>
-        <fieldset class="popup__info">
-          <input id="name-input" class="popup__info-text popup__info-text_type_name" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
-          <p class="name-input-error popup__input-error"></p>
-          <input id="job-input" class="popup__info-text popup__info-text_type_job" type="text" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
-          <p class="job-input-error popup__input-error"></p>
-        </fieldset>
-        <button class="popup__save-button" type="submit">Сохранить</button>
-      </form>
-    </div>
-    <div class="popup popup_type_elements">
-      <form class="popup__container popup__container_type_elements" name="addElements" novalidate>
-        <button class="button-close button-close_tepe_elements" type="button"></button>
-        <p class="popup__edit-profile">Новое место</p>
-        <fieldset class="popup__info">
-          <input id="title-input" class="popup__info-text popup__info-text_type_title" type="text" placeholder ="Название" required minlength="2" maxlength="30">
-          <p class="title-input-error popup__input-error"></p>
-          <input id="fotolink-input" class="popup__info-text popup__info-text_type_fotolink" type="url" placeholder ="Ссылка на картинку" required>
-          <p class="fotolink-input-error popup__input-error"></p>
-        </fieldset>
-        <button class="popup__save-button" type="submit">Создать</button>
-      </form>
-    </div>
-    <div class="popup-foto popup">
-      <div class="popup-foto__conteiner">
-        <button class="button-close button-close_tepe_foto" type="button"></button>
-        <img class="popup-foto__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
-        <p class="popup-foto__name-foto">Название места</p>
-      </div>
-    </div>
     <header class="header">
       <div class="header__logo"></div>
     </header>
@@ -76,6 +43,39 @@
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
+      <div class="popup popup_type_profile">
+        <form class="popup__container popup__container_type_profile" name="editProfile" novalidate>
+          <button class="button-close button-close_tepe_profile" type="button"></button>
+          <p class="popup__edit-profile">Редактировать профиль</p>
+          <fieldset class="popup__info">
+            <input id="name-input" class="popup__info-text popup__info-text_type_name" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
+            <p class="name-input-error popup__input-error"></p>
+            <input id="job-input" class="popup__info-text popup__info-text_type_job" type="text" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
+            <p class="job-input-error popup__input-error"></p>
+          </fieldset>
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
+      </div>
+      <div class="popup popup_type_elements">
+        <form class="popup__container popup__container_type_elements" name="addElements" novalidate>
+          <button class="button-close button-close_tepe_elements" type="button"></button>
+          <p class="popup__edit-profile">Новое место</p>
+          <fieldset class="popup__info">
+            <input id="title-input" class="popup__info-text popup__info-text_type_title" type="text" placeholder ="Название" required minlength="2" maxlength="30">
+            <p class="title-input-error popup__input-error"></p>
+            <input id="fotolink-input" class="popup__info-text popup__info-text_type_fotolink" type="url" placeholder ="Ссылка на картинку" required>
+            <p class="fotolink-input-error popup__input-error"></p>
+          </fieldset>
+          <button class="popup__save-button" type="submit">Создать</button>
+        </form>
+      </div>
+      <div class="popup-foto popup">
+        <div class="popup-foto__conteiner">
+          <button class="button-close button-close_tepe_foto" type="button"></button>
+          <img class="popup-foto__foto" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="замок">
+          <p class="popup-foto__name-foto">Название места</p>
+        </div>
+      </div>
     <script src="./src/constants.js"></script>
     <script src="./src/index.js"></script>
     <script src="./src/validate.js"></script>
