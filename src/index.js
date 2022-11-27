@@ -46,6 +46,7 @@ function submitHandlerProfileForm (evt) {
 
 function openEditProfile() {
   openPopup(popupEditProfile);
+  closeValidForm(popupEditProfile);
   popupInfoName.value = profileTitle.textContent;
   popupInfoJob.value = profileSubtitl.textContent;
 };
@@ -53,8 +54,8 @@ function openEditProfile() {
 function openAddFoto() {
   openPopup(popupAddFoto);
   formAddFoto.reset();
-
-   blockButton(buttonElement, 'popup__save-button_disabled');
+  closeValidForm(popupAddFoto);
+  blockButton(buttonElement, 'popup__save-button_disabled');
 };
 
 function openElementFoto(name, link) {
@@ -72,7 +73,6 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   removeListenerSrc();
-  closeValidForm(popup);
 }
 
 const removeListenerSrc = () => {
