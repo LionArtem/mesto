@@ -1,14 +1,5 @@
 import { buttonElement } from './index.js'
 
-const formSelectors = {
-  formSelector: '.popup__container',
-  inputSelector: '.popup__info-text',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__info-text_type_error',
-  errorClass: 'popup__error_visible',
-};
-
 class FormValidator {
   constructor(formSelectors, form) {
     this._formSelector = formSelectors.formSelector;
@@ -83,9 +74,4 @@ _isValid = (inputElement) => {
 };
 }
 
-function blockButton(button, buttonSelectorDisabled) {
-  button.classList.add(buttonSelectorDisabled);
-  buttonElement.disabled = true;
-}
-
-export { blockButton, FormValidator, formSelectors }
+export { FormValidator }

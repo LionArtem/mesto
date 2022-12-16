@@ -1,4 +1,4 @@
-import { elementTemplate, fotoPopup, nameFotoPopup, openPopup, popupFoto } from './index.js'
+import { fotoPopup, nameFotoPopup, openPopup, popupFoto } from './generalVariables.js'
 
 class Card {
     constructor(name, link, templateSelector) {
@@ -8,7 +8,8 @@ class Card {
     }
   
     _getTemplate() {
-      const copyElementTemplate = elementTemplate.querySelector(this._templateSelector).cloneNode(true);
+      const elementTemplate = document.querySelector(this._templateSelector).content;//находим Template
+      const copyElementTemplate = elementTemplate.querySelector('.element').cloneNode(true);
       return copyElementTemplate;
       // здесь выполним все необходимые операции, чтобы вернуть разметку
     }
@@ -30,7 +31,7 @@ class Card {
       })
   
       this._element.querySelector('.element__delete').addEventListener('click', (evt) => {
-        this._deleteFoto(evt);
+        this._deleteFoto();
       })
   
       this._copyElementFotoTemplate.addEventListener('click', () => 
@@ -48,9 +49,9 @@ class Card {
       evt.target.classList.toggle('element__like_active');
   };
   
-  _deleteFoto(evt) { 
-    const elementFotoDelete = evt.target.closest(this._templateSelector);
-    elementFotoDelete.remove();
+  _deleteFoto() { 
+    this._element.remove();
+    this._element = null
   };
   }
 

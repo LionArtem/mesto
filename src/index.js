@@ -1,5 +1,7 @@
-import { blockButton, FormValidator, formSelectors } from './validate.js'
+import { FormValidator } from './validate.js'
 import { Card } from './Card.js'
+import { initialCards, formSelectors } from './constants.js'
+import { fotoPopup, nameFotoPopup, openPopup, popupFoto } from './generalVariables.js'
 
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonAddFoto = document.querySelector('.profile__add-button');
@@ -23,11 +25,6 @@ const infoFotoTitle = formAddFoto.querySelector('.popup__info-text_type_title');
 const infoFotoLink = formAddFoto.querySelector('.popup__info-text_type_fotolink');
  
 const sectionFoto = document.querySelector('.elements');// картачка с фото 
-const elementTemplate = document.querySelector('#elements').content;//находим Template
-
-const popupFoto = document.querySelector('.popup-foto');
-const fotoPopup = popupFoto.querySelector('.popup-foto__foto');
-const nameFotoPopup = popupFoto.querySelector('.popup-foto__name-foto');
 
 const buttonClosePopupFoto = document.querySelector('.button-close_tepe_foto');
 
@@ -53,13 +50,8 @@ function openAddFoto() {
   openPopup(popupAddFoto);
   formAddFoto.reset();
   formValidatorFoto.closeValidForm();
-  blockButton(buttonElement, 'popup__save-button_disabled');
+  formValidatorFoto._toggleButtonState();
 };
-
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  addListenerSrc();
-}
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -98,17 +90,19 @@ function addCard (card) {//добавляет карточку в разметк
 
 function submitHandlerElementsForm (evt) { //добавление карточки через попап 
   evt.preventDefault();
-  const card = new Card(infoFotoTitle.value, infoFotoLink.value, '.element');
-  const cardSubmit = card.generateCard();
-  addCard (cardSubmit);
+  addCard (createInstanceCard(infoFotoTitle.value, infoFotoLink.value, '#elements'));
   closePopup(popupAddFoto);
   };
 
   initialCards.forEach(function (item) { //массив с карточками 
-    const card = new Card(item.name, item.link, '.element');
-    const cardSubmit = card.generateCard();
-    addCard (cardSubmit);
+    addCard (createInstanceCard(item.name, item.link, '#elements'));
     });
+
+    function createInstanceCard (name, link, templateSelector) {
+      const card = new Card(name, link, templateSelector);
+      const cardSubmit = card.generateCard();
+      return cardSubmit;
+    }
 
 buttonEditProfile.addEventListener('click', openEditProfile);
 buttonAddFoto.addEventListener('click', openAddFoto);
@@ -126,4 +120,4 @@ const formValidatorFoto = new FormValidator(formSelectors, '.popup__container_ty
 formValidatorProfile.enableValidation();
 formValidatorFoto.enableValidation();
 
-export { buttonElement, elementTemplate, fotoPopup, nameFotoPopup, openPopup, popupFoto }
+export { buttonElement, fotoPopup, nameFotoPopup, openPopup, popupFoto, addListenerSrc }
