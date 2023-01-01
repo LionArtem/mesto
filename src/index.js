@@ -1,3 +1,4 @@
+import './index.css';
 import Section from '../components/Section.js';
 import Popup from '../components/Popup.js';
 import { FormValidator } from '../components/FormValidator.js';
@@ -45,13 +46,13 @@ function createInstanceCard(name, link, templateSelector) {
   return cardSubmit;
 }
 
+const InputValues = new UserInfo({
+  name: profileTitle,
+  job: profileSubtitl,
+});
+
 const openPopupProfile = new PopupWithForm('.popup_type_profile', {
   submitForm: (valuelist) => {
-    const InputValues = new UserInfo({
-      name: profileTitle.textContent,
-      job: profileSubtitl.textContent,
-    });
-
     InputValues.setUserInfo(valuelist[0].value, valuelist[1].value);
   },
 });
@@ -71,15 +72,9 @@ buttonAddFoto.addEventListener('click', () => {
 buttonEditProfile.addEventListener('click', () => {
   openPopupProfile.open();
 
-  const InputValues = new UserInfo({
-    name: profileTitle.textContent,
-    job: profileSubtitl.textContent,
-  });
   popupInfoName.value = InputValues.getUserInfo().name;
   popupInfoJob.value = InputValues.getUserInfo().job;
 });
-
-const openPopupFoto = new Popup('.popup_type_elements');
 
 const formValidatorProfile = new FormValidator(
   formSelectors,

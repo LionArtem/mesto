@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mesto</title>
-    <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="page">
     <header class="header">
@@ -13,7 +12,11 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/image.jpg" alt="аватар" />
+        <img
+          class="profile__avatar"
+          src="<%=require('../images/image.jpg')%>"
+          alt="аватар"
+        />
         <div class="profile__info">
           <ul class="profile__info-li">
             <li><h1 class="profile__title">Жак-Ив Кусто</h1></li>
@@ -22,13 +25,17 @@
           <button class="profile__edit-button" type="button">
             <img
               class="profile__pencil"
-              src="./images/pencil.png"
+              src="<%=require('../images/pencil.png')%>"
               alt="карандаш"
             />
           </button>
         </div>
         <button class="profile__add-button" type="button">
-          <img class="profile__plus" src="./images/plus.png" alt="плюс" />
+          <img
+            class="profile__plus"
+            src="<%=require('../images/plus.png')%>"
+            alt="плюс"
+          />
         </button>
       </section>
       <section class="elements">
@@ -37,7 +44,7 @@
             <button class="element__delete" type="button"></button>
             <img
               class="element__foto"
-              src="./images/kirill-pershin-1088404-unsplash.jpg"
+              src="<%=require('../images/kirill-pershin-1088404-unsplash.jpg')%>"
               alt="замок"
             />
             <div class="element__signature">
@@ -134,12 +141,11 @@
         ></button>
         <img
           class="popup-foto__foto"
-          src="./images/kirill-pershin-1088404-unsplash.jpg"
+          src="<%=require('../images/kirill-pershin-1088404-unsplash.jpg')%>"
           alt="замок"
         />
         <p class="popup-foto__name-foto">Название места</p>
       </div>
     </div>
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
