@@ -6,7 +6,7 @@ class FormValidator {
     this._inactiveButtonClass = formSelectors.inactiveButtonClass;
     this._inputErrorClass = formSelectors.inputErrorClass;
     this._errorClass = formSelectors.errorClass;
-    this._form = document.querySelector(form);
+    this._form = form;
     this._inputList = Array.from(
       this._form.querySelectorAll(this._inputSelector)
     );
@@ -52,7 +52,8 @@ class FormValidator {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
-    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.disabled = true;
   };
 
   // Функция, которая удаляет текст с ошибкой

@@ -1,4 +1,5 @@
 .popup__input-error {
+  max-width: 358px;
   margin-left: 36px;
   font-family: 'Inter';
   font-style: normal;

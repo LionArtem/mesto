@@ -24,17 +24,17 @@ class Card {
     this._element.querySelector('.element__name-foto').textContent = this._name;
     this._copyElementFotoTemplate.src = this._link;
     this._copyElementFotoTemplate.alt = this._name;
+    this._buttonLike = this._element.querySelector('.element__like');
     this._setEventListeners();
+    
 
     return this._element;
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector('.element__like')
-      .addEventListener('click', (evt) => {
-        this._addLike(evt);
-      });
+    this._buttonLike.addEventListener('click', (evt) => {
+      this._addLike(evt);
+    });
 
     this._element
       .querySelector('.element__delete')
@@ -48,7 +48,7 @@ class Card {
   }
 
   _addLike(evt) {
-    evt.target.classList.toggle('element__like_active');
+    this._buttonLike.classList.toggle('element__like_active');
   }
 
   _deleteFoto() {

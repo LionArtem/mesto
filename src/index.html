@@ -14,18 +14,18 @@
       <section class="profile">
         <img
           class="profile__avatar"
-          src="<%=require('../images/image.jpg')%>"
+          src="<%=require('./images/image.jpg')%>"
           alt="аватар"
         />
         <div class="profile__info">
-          <ul class="profile__info-li">
-            <li><h1 class="profile__title">Жак-Ив Кусто</h1></li>
-            <li><h2 class="profile__subtitl">Исследователь океана</h2></li>
-          </ul>
+          <div class="profile__info-li">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h2 class="profile__subtitl">Исследователь океана</h2>
+          </div>
           <button class="profile__edit-button" type="button">
             <img
               class="profile__pencil"
-              src="<%=require('../images/pencil.png')%>"
+              src="<%=require('./images/pencil.png')%>"
               alt="карандаш"
             />
           </button>
@@ -33,7 +33,7 @@
         <button class="profile__add-button" type="button">
           <img
             class="profile__plus"
-            src="<%=require('../images/plus.png')%>"
+            src="<%=require('./images/plus.png')%>"
             alt="плюс"
           />
         </button>
@@ -44,7 +44,7 @@
             <button class="element__delete" type="button"></button>
             <img
               class="element__foto"
-              src="<%=require('../images/kirill-pershin-1088404-unsplash.jpg')%>"
+              src="<%=require('./images/kirill-pershin-1088404-unsplash.jpg')%>"
               alt="замок"
             />
             <div class="element__signature">
@@ -59,18 +59,19 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
     <div class="popup popup_type_profile">
-      <form
-        class="popup__container popup__container_type_profile"
-        name="editProfile"
-        novalidate
-      >
+      <div class="popup__container">
         <button
           class="button-close button-close_tepe_profile"
           type="button"
         ></button>
         <p class="popup__edit-profile">Редактировать профиль</p>
-        <fieldset class="popup__info">
+        <form
+          class="popup__form popup__form_type_profile"
+          name="editProfile"
+          novalidate
+        >
           <input
+            name="name"
             id="name-input"
             class="popup__info-text popup__info-text_type_name"
             type="text"
@@ -81,6 +82,7 @@
           />
           <p class="name-input-error popup__input-error"></p>
           <input
+            name="job"
             id="job-input"
             class="popup__info-text popup__info-text_type_job"
             type="text"
@@ -90,23 +92,24 @@
             required
           />
           <p class="job-input-error popup__input-error"></p>
-        </fieldset>
-        <button class="popup__save-button" type="submit">Сохранить</button>
-      </form>
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
+      </div>
     </div>
     <div class="popup popup_type_elements">
-      <form
-        class="popup__container popup__container_type_elements"
-        name="addElements"
-        novalidate
-      >
+      <div class="popup__container">
         <button
           class="button-close button-close_tepe_elements"
           type="button"
         ></button>
         <p class="popup__edit-profile">Новое место</p>
-        <fieldset class="popup__info">
+        <form
+          class="popup__form popup__form_type_elements"
+          name="addElements"
+          novalidate
+        >
           <input
+            name="nameFoto"
             id="title-input"
             class="popup__info-text popup__info-text_type_title"
             type="text"
@@ -117,6 +120,7 @@
           />
           <p class="title-input-error popup__input-error"></p>
           <input
+            name="link"
             id="fotolink-input"
             class="popup__info-text popup__info-text_type_fotolink"
             type="url"
@@ -124,14 +128,14 @@
             required
           />
           <p class="fotolink-input-error popup__input-error"></p>
-        </fieldset>
-        <button
-          class="popup__save-button popup__save-button_add-foto"
-          type="submit"
-        >
-          Создать
-        </button>
-      </form>
+          <button
+            class="popup__save-button popup__save-button_add-foto"
+            type="submit"
+          >
+            Создать
+          </button>
+        </form>
+      </div>
     </div>
     <div class="popup-foto popup">
       <div class="popup-foto__conteiner">
@@ -141,7 +145,7 @@
         ></button>
         <img
           class="popup-foto__foto"
-          src="<%=require('../images/kirill-pershin-1088404-unsplash.jpg')%>"
+          src="<%=require('./images/kirill-pershin-1088404-unsplash.jpg')%>"
           alt="замок"
         />
         <p class="popup-foto__name-foto">Название места</p>
