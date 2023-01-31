@@ -3,5 +3,6 @@
   flex-direction: row;
   justify-content: space-between;
   max-width: 246px;
+  /* margin: 0px auto 31px ; */
   margin: 0px 15px 31px 21px;
 }

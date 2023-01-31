@@ -1,15 +1,20 @@
-class Card {
-  constructor(item, templateSelector, { handleCardClick }) {
+import { popapDelete, api } from '../utils/generalVariables.js';
+
+export default class Card {
+  constructor(item, templateSelector, { handleCardClick, handleDEliteClick }) {
+    this._item = item;
     this._name = item.name;
     this._link = item.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleDEliteClick = handleDEliteClick;
   }
 
   _getTemplate() {
     const elementTemplate = document.querySelector(
       this._templateSelector
-    ).content; //находим Template
+    ).content;
+
     const copyElementTemplate = elementTemplate
       .querySelector('.element')
       .cloneNode(true);
@@ -25,21 +30,44 @@ class Card {
     this._copyElementFotoTemplate.src = this._link;
     this._copyElementFotoTemplate.alt = this._name;
     this._buttonLike = this._element.querySelector('.element__like');
+
+    if (this._item.likes.find((el) => el._id == '0fd71b3fe64db14c2991b773')) {
+      this._buttonLike.classList.add('element__like_active');
+    }
+    this._likeCounter = this._element.querySelector('.element__like-counter');
+
+    if (this._item.likes.length !== 0) {
+      this._likeCounter.textContent = this._item.likes.length;
+    }
     this._setEventListeners();
-    
 
     return this._element;
   }
 
+  deleteClick() {
+    this._buttonClose.removeEventListener('click', this._buttonCloseClick);
+  }
+
   _setEventListeners() {
-    this._buttonLike.addEventListener('click', (evt) => {
-      this._addLike(evt);
-    });
+    this._buttonLike.addEventListener(
+      'click',
+      (this._addLikeRemove = () => {
+        this._addLike();
+      })
+    );
 
     this._element
       .querySelector('.element__delete')
       .addEventListener('click', (evt) => {
-        this._deleteFoto();
+        popapDelete.open();
+        this._popap = document.querySelector('.popup_opened');
+        this._buttonClose = this._popap.querySelector('.popup__save-button');
+        this._buttonClose.addEventListener(
+          'click',
+          (this._buttonCloseClick = () => {
+            this._handleDEliteClick(this._item);
+          })
+        );
       });
 
     this._copyElementFotoTemplate.addEventListener('click', () =>
@@ -47,14 +75,40 @@ class Card {
     );
   }
 
-  _addLike(evt) {
-    this._buttonLike.classList.toggle('element__like_active');
+  _addLike() {
+    if (
+      this._item.likes.length == 0 ||
+      !this._item.likes.find((el) => el._id == '0fd71b3fe64db14c2991b773')
+    ) {
+      api
+        .toggleLike(this._item._id, 'PUT')
+        .then((data) => {
+          this._buttonLike.classList.add('element__like_active');
+          this._lakesLenght(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      api
+        .toggleLike(this._item._id, 'DELETE')
+        .then((data) => {
+          this._buttonLike.classList.remove('element__like_active');
+          this._lakesLenght(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
-  _deleteFoto() {
+  _lakesLenght(data) {
+    this._item = data;
+    this._likeCounter.textContent = data.likes.length;
+  }
+
+  deleteFoto() {
     this._element.remove();
     this._element = null;
   }
 }
-
-export { Card };

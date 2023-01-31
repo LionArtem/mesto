@@ -12,15 +12,18 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img
-          class="profile__avatar"
-          src="<%=require('./images/image.jpg')%>"
-          alt="аватар"
-        />
+        <div class="profile__conteiner">
+          <div class="profile__pencil-avatar"></div>
+          <img
+            class="profile__avatar"
+            src=""
+            alt="аватар"
+          />
+        </div>
         <div class="profile__info">
           <div class="profile__info-li">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <h2 class="profile__subtitl">Исследователь океана</h2>
+            <h1 class="profile__title"></h1>
+            <h2 class="profile__subtitl"></h2>
           </div>
           <button class="profile__edit-button" type="button">
             <img
@@ -49,7 +52,10 @@
             />
             <div class="element__signature">
               <p class="element__name-foto">Название места</p>
-              <button class="element__like" type="button"></button>
+              <dev>
+                <button class="element__like" type="button"></button>
+                <p class="element__like-counter">0</p>
+              </dev>
             </div>
           </div>
         </template>
@@ -58,6 +64,47 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <div class="popup popup_type_avatar">
+      <div class="popup__container">
+        <button
+          class="button-close button-close_tepe_elements"
+          type="button"
+        ></button>
+        <p class="popup__edit-profile">Новое место</p>
+        <form
+          class="popup__form popup__form_type_avatar"
+          name="addElements"
+          novalidate
+        >
+          <input
+            name="link"
+            id="fotolink-input"
+            class="popup__info-text popup__info-text_type_fotolink"
+            type="url"
+            placeholder="Ссылка на аватар"
+            required
+          />
+          <p class="fotolink-input-error popup__input-error"></p>
+          <button
+            class="popup__save-button popup__save-button_add-foto"
+            type="submit"
+          >
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_delete">
+      <div class="popup__container">
+        <button
+          class="button-close"
+          type="button"
+        ></button>
+        <p class="popup__edit-profile">Вы уверены?</p>
+          <button class="popup__save-button" type="button">Да</button>
+        </form>
+      </div>
+    </div>
     <div class="popup popup_type_profile">
       <div class="popup__container">
         <button
