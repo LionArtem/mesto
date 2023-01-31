@@ -16,7 +16,7 @@
           <div class="profile__pencil-avatar"></div>
           <img
             class="profile__avatar"
-            src=""
+            src="<%=require('./images/image.jpg')%>"
             alt="аватар"
           />
         </div>
@@ -77,7 +77,7 @@
           novalidate
         >
           <input
-            name="link"
+            name="linkAvatar"
             id="fotolink-input"
             class="popup__info-text popup__info-text_type_fotolink"
             type="url"
@@ -102,7 +102,6 @@
         ></button>
         <p class="popup__edit-profile">Вы уверены?</p>
           <button class="popup__save-button" type="button">Да</button>
-        </form>
       </div>
     </div>
     <div class="popup popup_type_profile">

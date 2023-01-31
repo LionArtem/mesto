@@ -36,9 +36,9 @@ api
   });
 
 const popupOpenAvatar = new PopupWithForm('.popup_type_avatar', {
-  submitForm: ({ link }) => {
+  submitForm: ({ linkAvatar }) => {
     api
-      .addServerUserAvatar(link)
+      .addServerUserAvatar(linkAvatar)
       .then((res) => {
         userInfo.setUserAvatar(res.avatar);
         popupOpenAvatar.close();

@@ -17,7 +17,7 @@ const popupInfoJob = formEditProfile.querySelector(
   '.popup__info-text_type_job'
 );
 
-const avatar = document.querySelector('.profile__avatar');
+const avatar = document.querySelector('.profile__conteiner');
 
 const openWithFoto = new PopupWithImage('.popup-foto');
 openWithFoto.setEventListeners();
