@@ -5,7 +5,8 @@
 .header{border-bottom:1px solid rgba(54,54,54,.7);margin:45px auto 40px;max-width:880px;min-height:74px}@media screen and (max-width:320px){.header{margin-top:28px;min-height:56px}}
 .header__logo{background-image:url(a8a2cc376a4f96fe4a17.png);background-repeat:no-repeat;background-size:contain;max-width:132px;min-height:33px}@media screen and (max-width:320px){.header__logo{margin-left:27px;max-width:103px;min-height:24px}}
 .profile{color:#fff;display:flex;flex-direction:row;margin:0 auto 51px;max-width:880px;position:relative}@media screen and (max-width:720px){.profile{flex-wrap:wrap;justify-content:center;margin-bottom:36px}}
-.profile__avatar{border-radius:50%;height:120px;margin-right:30px;width:120px}@media screen and (max-width:360px){.profile__avatar{margin:0 auto 26px}}
+.profile__conteiner{height:120px;margin-right:30px;position:relative;width:120px;z-index:1}.profile__conteiner:after{background-color:#2a2c2f;background-position:50%;border-radius:50%;bottom:0;content:"";left:0;opacity:0;position:absolute;right:0;top:0;z-index:1}.profile__conteiner:hover:after{background-image:url(a086f758840ae814ecde.svg);background-repeat:no-repeat;opacity:.8}
+.profile__avatar{border-radius:50%;height:120px;width:120px;z-index:-1}@media screen and (max-width:360px){.profile__avatar{margin:0 auto 26px}}
 .profile__info{display:flex;flex-direction:row}@media screen and (max-width:360px){.profile__info{margin:auto}}
 .profile__info-li{margin:0 18px 0 0;max-width:293px;padding:22px 0 25px;position:relative}@media screen and (max-width:360px){.profile__info-li{font-size:14px;line-height:17px;margin-right:10px;max-width:250px;padding:0;text-align:center}}
 .profile__title{font-family:Inter,Arial,sans-serif;font-size:42px;font-style:normal;font-weight:500;line-height:48px;margin:0 0 16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:360px){.profile__title{font-size:27px;line-height:33px;margin-bottom:14px;text-align:center}}
@@ -20,7 +21,8 @@
 .element__foto{border-radius:10px 10px 0 0;height:282px;margin-bottom:25px;max-width:100%;-o-object-fit:cover;object-fit:cover}.element__foto:hover{cursor:pointer}
 .element__signature{display:flex;flex-direction:row;justify-content:space-between;margin:0 15px 31px 21px;max-width:246px}
 .element__name-foto{font-family:Inter,Arial,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:210px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.element__like{all:unset;background-image:url(1ad06e85f169668a1f36.svg);height:19px;margin:5px 5px 0 0;width:22px}.element__like:hover{cursor:pointer;opacity:.5}
+.element__like{all:unset;background-image:url(1ad06e85f169668a1f36.svg);height:19px;margin:0;width:22px}.element__like:hover{cursor:pointer;opacity:.5}
+.element__like-counter{color:#000;font-family:Inter;font-size:13px;font-style:normal;font-weight:400;line-height:16px;margin:0;padding:0;text-align:center}
 .element__like_active{background-image:url(7d05f10516335c399062.png)}
 .footer{margin:0 auto 60px;max-width:880px}@media screen and (max-width:960px){.footer{max-width:581px}}@media screen and (max-width:600px){.footer{margin-bottom:36px;max-width:282px}}
 .footer__copyright{color:#545454;font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:22px;margin:0}@media screen and (max-width:320px){.footer__copyright{font-size:14px;line-height:17px}}
