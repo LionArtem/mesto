@@ -11,10 +11,11 @@ import {
   formEditProfile,
   formEditFoto,
   openWithFoto,
-  popapDelete,
+  // popapDelete,
   api,
   avatar,
   formEditAvatar,
+  popapDelete,
 } from '../utils/generalVariables.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -91,22 +92,25 @@ api
   });
 
 function createCard(item, templateSelector) {
+  //console.log(item);
   //отдает готовую карточку
   const card = new Card(item, templateSelector, {
     handleCardClick: (link, name) => {
       openWithFoto.open(link, name);
     },
     handleDEliteClick: (item) => {
-      api
-        .deleteImg(item._id)
-        .then(() => {
-          card.deleteFoto();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      card.deleteClick();
-      popapDelete.close();
+      //console.log(item);
+      // popapDelete.open();
+      // popapDelete.setSubmitHandler((item) => {
+      //   api
+      //     .deleteImg(item._id)
+      //     .then(() => {
+      //       card.deleteFoto();
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      // });
     },
   });
   const cardSubmit = card.generateCard();

@@ -44,10 +44,6 @@ export default class Card {
     return this._element;
   }
 
-  deleteClick() {
-    this._buttonClose.removeEventListener('click', this._buttonCloseClick);
-  }
-
   _setEventListeners() {
     this._buttonLike.addEventListener(
       'click',
@@ -60,14 +56,17 @@ export default class Card {
       .querySelector('.element__delete')
       .addEventListener('click', (evt) => {
         popapDelete.open();
-        this._popap = document.querySelector('.popup_opened');
-        this._buttonClose = this._popap.querySelector('.popup__save-button');
-        this._buttonClose.addEventListener(
-          'click',
-          (this._buttonCloseClick = () => {
-            this._handleDEliteClick(this._item);
-          })
-        );
+        popapDelete.setSubmitHandler(() => {
+          api
+            .deleteImg(this._item._id)
+            .then(() => {
+              this._deleteFoto();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          popapDelete.close();
+        });
       });
 
     this._copyElementFotoTemplate.addEventListener('click', () =>
@@ -107,7 +106,7 @@ export default class Card {
     this._likeCounter.textContent = data.likes.length;
   }
 
-  deleteFoto() {
+  _deleteFoto() {
     this._element.remove();
     this._element = null;
   }

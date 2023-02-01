@@ -98,7 +98,13 @@
       <div class="popup__container">
         <button class="button-close" type="button"></button>
         <p class="popup__edit-profile">Вы уверены?</p>
-        <button class="popup__save-button" type="button">Да</button>
+        <form
+          class="popup__form popup__form_type_profile"
+          name="deleteFoto"
+          novalidate
+        >
+          <button class="popup__save-button" type="submit">Да</button>
+        </form>
       </div>
     </div>
     <div class="popup popup_type_profile">
