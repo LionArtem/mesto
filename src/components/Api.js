@@ -85,9 +85,14 @@ export default class Api {
     });
   }
 
-  toggleLike(id, method) {
+  changeLikeCard(isLike, id) {
+    // if(isLike){
+    //   this._method = 'PUT';
+    // }
+    // this._method = 'DELETE'
+    isLike ? (this._method = 'PUT') : (this._method = 'DELETE');
     return fetch(`${this.baseUrl}/cards/${id}/likes`, {
-      method: method,
+      method: this._method,
       headers: this.headers,
       body: JSON.stringify({
         likes: {
@@ -102,4 +107,22 @@ export default class Api {
       return Promise.reject(`Ошибка: ${response.status}`);
     });
   }
+
+  // toggleLike(id, method) {
+  //   return fetch(`${this.baseUrl}/cards/${id}/likes`, {
+  //     method: method,
+  //     headers: this.headers,
+  //     body: JSON.stringify({
+  //       likes: {
+  //         name: 'artem',
+  //         about: 'man',
+  //       },
+  //     }),
+  //   }).then((response) => {
+  //     if (response.ok) {
+  //       return response.json();
+  //     }
+  //     return Promise.reject(`Ошибка: ${response.status}`);
+  //   });
+  // }
 }

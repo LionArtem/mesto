@@ -1,5 +1,4 @@
 import PopupWithImage from '../components/PopupWithImage.js';
-// import Popup from '../components/Popup.js';
 import PopupWithСonfirmation from '../components/PopupWithСonfirmation.js';
 import Api from '../components/Api.js';
 
@@ -23,10 +22,6 @@ const avatar = document.querySelector('.profile__conteiner');
 const openWithFoto = new PopupWithImage('.popup-foto');
 openWithFoto.setEventListeners();
 
-// const popapDelete = new Popup('.popup_type_delete');
-
-// popapDelete.setEventListeners();
-
 const popapDelete = new PopupWithСonfirmation('.popup_type_delete');
 
 popapDelete.setEventListeners();
@@ -48,7 +43,6 @@ export {
   popupInfoName,
   popupInfoJob,
   formEditFoto,
-  // popapDelete,
   openWithFoto,
   api,
   avatar,

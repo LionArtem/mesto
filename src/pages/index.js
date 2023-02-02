@@ -11,7 +11,6 @@ import {
   formEditProfile,
   formEditFoto,
   openWithFoto,
-  // popapDelete,
   api,
   avatar,
   formEditAvatar,
@@ -92,25 +91,36 @@ api
   });
 
 function createCard(item, templateSelector) {
-  //console.log(item);
   //отдает готовую карточку
   const card = new Card(item, templateSelector, {
     handleCardClick: (link, name) => {
       openWithFoto.open(link, name);
     },
-    handleDEliteClick: (item) => {
-      //console.log(item);
-      // popapDelete.open();
-      // popapDelete.setSubmitHandler((item) => {
-      //   api
-      //     .deleteImg(item._id)
-      //     .then(() => {
-      //       card.deleteFoto();
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
-      // });
+    handleDEliteClick: (itemId) => {
+      popapDelete.open();
+      popapDelete.setSubmitHandler(itemId, (itemId) => {
+        api
+          .deleteImg(itemId)
+          .then(() => {
+            card.deleteFoto();
+            popapDelete.close();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    },
+    handleLikeClick: (isLike, id) => {
+      
+      api
+        .changeLikeCard(isLike, id)
+        .then((data) => {
+          console.log(data);
+          card.toggleLike(data)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   });
   const cardSubmit = card.generateCard();
