@@ -51,8 +51,8 @@ export default class Card {
 
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => {
-      console.log(this._item.likes);
-      console.log(this.isLiked(this._item));
+      //console.log(this._item.likes);
+      //console.log(this.isLiked(this._item));
 
       this._handleLikeClick(this.isLiked(this._item), this._item._id);
       // this._addLike();
@@ -103,11 +103,11 @@ export default class Card {
 
   toggleLike(data) {
     if (this.isLiked(data)) {
-      console.log('remove');
+      //console.log('remove');
       this._buttonLike.classList.remove('element__like_active');
       this._lakesLenght(data);
     } else {
-      console.log('add');
+      // console.log('add');
       this._buttonLike.classList.add('element__like_active');
       this._lakesLenght(data);
     }

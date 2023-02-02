@@ -115,7 +115,7 @@ function createCard(item, templateSelector) {
       api
         .changeLikeCard(isLike, id)
         .then((data) => {
-          console.log(data);
+          //console.log(data);
           card.toggleLike(data)
         })
         .catch((err) => {
