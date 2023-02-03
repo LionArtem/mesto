@@ -1,5 +1,3 @@
-// import { api } from '../utils/generalVariables.js';
-
 export default class Card {
   constructor(
     item,
@@ -51,11 +49,7 @@ export default class Card {
 
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => {
-      //console.log(this._item.likes);
-      //console.log(this.isLiked(this._item));
-
       this._handleLikeClick(this.isLiked(this._item), this._item._id);
-      // this._addLike();
     });
 
     this._element
@@ -74,40 +68,12 @@ export default class Card {
       !data.likes.find((el) => el._id == '0fd71b3fe64db14c2991b773')
     );
   }
-  // _addLike() {
-  //   if (
-  //     this._item.likes.length == 0 ||
-  //     !this._item.likes.find((el) => el._id == '0fd71b3fe64db14c2991b773')
-  //   ) {
-  //     api
-  //       .toggleLike(this._item._id, 'PUT')
-  //       .then((data) => {
-  //         this._buttonLike.classList.add('element__like_active');
-  //         this._lakesLenght(data);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   } else {
-  //     api
-  //       .toggleLike(this._item._id, 'DELETE')
-  //       .then((data) => {
-  //         this._buttonLike.classList.remove('element__like_active');
-  //         this._lakesLenght(data);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // }
 
   toggleLike(data) {
     if (this.isLiked(data)) {
-      //console.log('remove');
       this._buttonLike.classList.remove('element__like_active');
       this._lakesLenght(data);
     } else {
-      // console.log('add');
       this._buttonLike.classList.add('element__like_active');
       this._lakesLenght(data);
     }
