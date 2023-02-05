@@ -27,7 +27,7 @@ const popapDelete = new PopupWithСonfirmation('.popup_type_delete');
 popapDelete.setEventListeners();
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-58',
+  baseUrl: 'nomoreparties.co/v1/cohort-58',
   headers: {
     authorization: '83664f83-845b-444d-96ac-5e42c57d9b46',
     'Content-Type': 'application/json',

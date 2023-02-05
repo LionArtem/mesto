@@ -5,102 +5,70 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this.baseUrl}/cards`, {
+    return fetch(`https://mesto.${this.baseUrl}/cards`, {
       headers: this.headers,
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   addServerUserInfo({ name, about }) {
-    return fetch('https://nomoreparties.co/v1/cohort-58/users/me', {
+    return fetch(`https://${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
         name,
         about,
       }),
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
-  editInfoProfil() {
-    return fetch('https://nomoreparties.co/v1/cohort-58/users/me', {
+  getUserInfo() {
+    return fetch(`https://${this.baseUrl}/users/me`, {
       headers: this.headers,
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   addServerUserAvatar(url) {
-    return fetch(`${this.baseUrl}/users/me/avatar`, {
+    return fetch(`https://mesto.${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
         avatar: url,
       }),
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   addNewCard({ nameFoto, link }) {
-    return fetch(`${this.baseUrl}/cards`, {
+    return fetch(`https://mesto.${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
         name: nameFoto,
         link,
       }),
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   deleteImg(id) {
-    return fetch(`${this.baseUrl}/cards/${id}`, {
+    return fetch(`https://mesto.${this.baseUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: this.headers,
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   changeLikeCard(isLike, id) {
     isLike ? (this._method = 'PUT') : (this._method = 'DELETE');
-    return fetch(`${this.baseUrl}/cards/${id}/likes`, {
+    return fetch(`https://mesto.${this.baseUrl}/cards/${id}/likes`, {
       method: this._method,
       headers: this.headers,
       body: JSON.stringify({
-        likes: {
-          name: 'artem',
-          about: 'man',
-        },
+        likes: {},
       }),
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(`Ошибка: ${response.status}`);
-    });
+    }).then(this._checkResponse);
   }
+
+  _checkResponse = (res) => {
+    if (res.ok) {
+      return res.json();
+    }
+  };
 }

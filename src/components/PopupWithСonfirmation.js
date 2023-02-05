@@ -4,7 +4,7 @@ export default class PopupWithСonfirmation extends Popup {
   constructor(selectorPopap) {
     super(selectorPopap);
     this._form = this._popap.querySelector('.popup__form_type_deleteFoto');
-    this._seveBtn = this._popap.querySelector('.popup__save-button');
+    this._submitButton = this._popap.querySelector('.popup__save-button');
   }
 
   setSubmitHandler(itemId, handler) {
@@ -17,14 +17,14 @@ export default class PopupWithСonfirmation extends Popup {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleSubmitHandler(this._itemId);
-      this._seveBtn.textContent = 'Удаление...';
+      this._submitButton.textContent = 'Удаление...';
     });
   }
 
   close() {
     super.close();
     setTimeout(() => {
-      this._seveBtn.textContent = 'Да';
+      this._submitButton.textContent = 'Да';
     }, 1000);
   }
 }

@@ -25,13 +25,24 @@ class FormValidator {
   _toggleButtonState = () => {
     // состояние кнопки
     if (this._hasInvalidInput()) {
-      this._buttonElement.classList.add(this._inactiveButtonClass);
-      this._buttonElement.disabled = true;
+      this._disableButton();
     } else {
       this._buttonElement.classList.remove(this._inactiveButtonClass);
       this._buttonElement.disabled = false;
     }
   };
+
+  resetValidation = () => {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+    this._disableButton();
+  };
+
+  _disableButton() {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.disabled = true;
+  }
 
   // Функция принимает массив полей
   _hasInvalidInput = () => {
@@ -46,14 +57,6 @@ class FormValidator {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`); // Находим элемент ошибки
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
-  };
-
-  closeValidForm = () => {
-    this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement);
-    });
-    this._buttonElement.classList.add(this._inactiveButtonClass);
-    this._buttonElement.disabled = true;
   };
 
   // Функция, которая удаляет текст с ошибкой

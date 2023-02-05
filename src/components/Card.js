@@ -2,8 +2,10 @@ export default class Card {
   constructor(
     item,
     templateSelector,
+    userId,
     { handleCardClick, handleDEliteClick, handleLikeClick }
   ) {
+    this._userId = userId;
     this._item = item;
     this._name = item.name;
     this._link = item.link;
@@ -34,7 +36,7 @@ export default class Card {
     this._copyElementFotoTemplate.alt = this._name;
     this._buttonLike = this._element.querySelector('.element__like');
 
-    if (this._item.likes.find((el) => el._id == '0fd71b3fe64db14c2991b773')) {
+    if (this._item.likes.find((el) => el._id == this._userId)) {
       this._buttonLike.classList.add('element__like_active');
     }
     this._likeCounter = this._element.querySelector('.element__like-counter');
@@ -43,7 +45,9 @@ export default class Card {
       this._likeCounter.textContent = this._item.likes.length;
     }
     this._setEventListeners();
-
+    if (!(this._item.owner._id === this._userId)) {
+      this._element.querySelector('.element__delete').remove();
+    }
     return this._element;
   }
 
@@ -64,8 +68,7 @@ export default class Card {
   }
   isLiked(data) {
     return (
-      data.likes.length == 0 ||
-      !data.likes.find((el) => el._id == '0fd71b3fe64db14c2991b773')
+      data.likes.length == 0 || !data.likes.find((el) => el._id == this._userId)
     );
   }
 
