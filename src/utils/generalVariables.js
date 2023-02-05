@@ -27,12 +27,24 @@ const popapDelete = new PopupWithСonfirmation('.popup_type_delete');
 popapDelete.setEventListeners();
 
 const api = new Api({
-  baseUrl: 'nomoreparties.co/v1/cohort-58',
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-58',
   headers: {
     authorization: '83664f83-845b-444d-96ac-5e42c57d9b46',
     'Content-Type': 'application/json',
   },
 });
+
+const toggleLoading = (popupSelector, isLoading = false) => {
+  const activeButton = popupSelector.querySelector('.popup__save-button');
+
+  if (isLoading) {
+    activeButton.textContent = ' Сохранение...';
+  } else {
+    setTimeout(() => {
+      activeButton.textContent = 'Сохранить';
+    }, 500);
+  }
+};
 
 export {
   buttonCloseProfile,
@@ -48,4 +60,5 @@ export {
   avatar,
   formEditAvatar,
   popapDelete,
+  toggleLoading,
 };

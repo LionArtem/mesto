@@ -17,6 +17,7 @@ import {
   avatar,
   formEditAvatar,
   popapDelete,
+  toggleLoading,
 } from '../utils/generalVariables.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -44,24 +45,27 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   });
 
 const popupOpenAvatar = new PopupWithForm('.popup_type_avatar', {
-  submitForm: ({ linkAvatar }) => {
+  submitForm: ({ linkAvatar }, popupSelector) => {
+    toggleLoading(popupSelector, true);
     api
       .addServerUserAvatar(linkAvatar)
       .then((res) => {
         userInfo.setUserAvatar(res);
-      })
-      .finally(() => {
         popupOpenAvatar.close();
       })
       .catch((err) => {
         console.log(err);
         alert(`Ошибка: ${err}`);
+      })
+      .finally(() => {
+        toggleLoading(popupSelector);
       });
   },
 });
 
 const popupOpenProfile = new PopupWithForm('.popup_type_profile', {
-  submitForm: ({ name, job }) => {
+  submitForm: ({ name, job }, popupSelector) => {
+    toggleLoading(popupSelector, true);
     api
       .addServerUserInfo({
         name: name,
@@ -69,30 +73,33 @@ const popupOpenProfile = new PopupWithForm('.popup_type_profile', {
       })
       .then((res) => {
         userInfo.setUserInfo(res);
-      })
-      .finally(() => {
         popupOpenProfile.close();
       })
       .catch((err) => {
         console.log(err);
         alert(`Ошибка: ${err}`);
+      })
+      .finally(() => {
+        toggleLoading(popupSelector);
       });
   },
 });
 
 const addFotoPopup = new PopupWithForm('.popup_type_elements', {
-  submitForm: ({ nameFoto, link }) => {
+  submitForm: ({ nameFoto, link }, popupSelector) => {
+    toggleLoading(popupSelector, true);
     api
       .addNewCard({ nameFoto, link })
       .then((result) => {
         defaultCardList.prependItem(createCard(result, '#elements'));
-      })
-      .finally(() => {
         addFotoPopup.close();
       })
       .catch((err) => {
         console.log(err);
         alert(`Ошибка: ${err}`);
+      })
+      .finally(() => {
+        toggleLoading(popupSelector);
       });
   },
 });

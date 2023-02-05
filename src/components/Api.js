@@ -5,13 +5,13 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`https://mesto.${this.baseUrl}/cards`, {
+    return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers,
     }).then(this._checkResponse);
   }
 
   addServerUserInfo({ name, about }) {
-    return fetch(`https://${this.baseUrl}/users/me`, {
+    return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
@@ -22,13 +22,13 @@ export default class Api {
   }
 
   getUserInfo() {
-    return fetch(`https://${this.baseUrl}/users/me`, {
+    return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
     }).then(this._checkResponse);
   }
 
   addServerUserAvatar(url) {
-    return fetch(`https://mesto.${this.baseUrl}/users/me/avatar`, {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
@@ -38,7 +38,7 @@ export default class Api {
   }
 
   addNewCard({ nameFoto, link }) {
-    return fetch(`https://mesto.${this.baseUrl}/cards`, {
+    return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
@@ -49,7 +49,7 @@ export default class Api {
   }
 
   deleteImg(id) {
-    return fetch(`https://mesto.${this.baseUrl}/cards/${id}`, {
+    return fetch(`${this.baseUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: this.headers,
     }).then(this._checkResponse);
@@ -57,7 +57,7 @@ export default class Api {
 
   changeLikeCard(isLike, id) {
     isLike ? (this._method = 'PUT') : (this._method = 'DELETE');
-    return fetch(`https://mesto.${this.baseUrl}/cards/${id}/likes`, {
+    return fetch(`${this.baseUrl}/cards/${id}/likes`, {
       method: this._method,
       headers: this.headers,
       body: JSON.stringify({
@@ -70,5 +70,6 @@ export default class Api {
     if (res.ok) {
       return res.json();
     }
+    return Promise.reject(`Ошибка: ${response.status}`);
   };
 }
